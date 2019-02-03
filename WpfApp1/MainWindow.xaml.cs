@@ -25,13 +25,22 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string mathOperator;
+        private string firstTerm;
+        private string secondTerm;
+        
 
         /// <summary>
         /// shows the created window 
         /// </summary>
         public MainWindow()
         {
+            this.mathOperator = "";
+            this.firstTerm = "";
+            this.secondTerm = "";
+
             InitializeComponent();
+            
         }
 
         /// <summary>
@@ -44,54 +53,194 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-            Button b = (Button)sender;
+            Button buttonClick = (Button) sender;
+            string button = buttonClick.Content.ToString();
 
-            
-            if (b == null)
+            switch (button)
             {
-                ArgumentNullException argumentNullException = new ArgumentNullException(nameof(sender));
-                throw argumentNullException;
+                case "1":
+                    displayTextBox.Text = displayTextBox.Text + buttonClick.Content;
+                    this.firstTerm += this.mathOperator == "+" || this.mathOperator == "-" || this.mathOperator == "X" || this.mathOperator == "/" ? "" : "1";
+                    this.secondTerm += this.mathOperator == "+" || this.mathOperator == "-" || this.mathOperator == "X" || this.mathOperator == "/" ? "1" : "";
+                    break;
+                case "2":
+                    displayTextBox.Text = displayTextBox.Text + buttonClick.Content;
+                    this.firstTerm += this.mathOperator == "+" || this.mathOperator == "-" || this.mathOperator == "X" || this.mathOperator == "/" ? "" : "2";
+                    this.secondTerm += this.mathOperator == "+" || this.mathOperator == "-" || this.mathOperator == "X" || this.mathOperator == "/" ? "2" : "";
+                    break;
+                case "3":
+                    displayTextBox.Text = displayTextBox.Text + buttonClick.Content;
+                    this.firstTerm += this.mathOperator == "+" || this.mathOperator == "-" || this.mathOperator == "X" || this.mathOperator == "/" ? "" : "3";
+                    this.secondTerm += this.mathOperator == "+" || this.mathOperator == "-" || this.mathOperator == "X" || this.mathOperator == "/" ? "3" : "";
+                    break;
+                case "4":
+                    displayTextBox.Text = displayTextBox.Text + buttonClick.Content;
+                    this.firstTerm += this.mathOperator == "+" || this.mathOperator == "-" || this.mathOperator == "X" || this.mathOperator == "/" ? "" : "4";
+                    this.secondTerm += this.mathOperator == "+" || this.mathOperator == "-" || this.mathOperator == "X" || this.mathOperator == "/" ? "4" : "";
+                    break;
+                case "5":
+                    displayTextBox.Text = displayTextBox.Text + buttonClick.Content;
+                    this.firstTerm += this.mathOperator == "+" || this.mathOperator == "-" || this.mathOperator == "X" || this.mathOperator == "/" ? "" : "5";
+                    this.secondTerm += this.mathOperator == "+" || this.mathOperator == "-" || this.mathOperator == "X" || this.mathOperator == "/" ? "5" : "";
+                    break;
+                case "6":
+                    displayTextBox.Text = displayTextBox.Text + buttonClick.Content;
+                    this.firstTerm += this.mathOperator == "+" || this.mathOperator == "-" || this.mathOperator == "X" || this.mathOperator == "/" ? "" : "6";
+                    this.secondTerm += this.mathOperator == "+" || this.mathOperator == "-" || this.mathOperator == "X" || this.mathOperator == "/" ? "6" : "";
+                    break;
+                case "7":
+                    displayTextBox.Text = displayTextBox.Text + buttonClick.Content;
+                    this.firstTerm += this.mathOperator == "+" || this.mathOperator == "-" || this.mathOperator == "X" || this.mathOperator == "/" ? "" : "7";
+                    this.secondTerm += this.mathOperator == "+" || this.mathOperator == "-" || this.mathOperator == "X" || this.mathOperator == "/" ? "7" : "";
+                    break;
+                case "8":
+                    displayTextBox.Text = displayTextBox.Text + buttonClick.Content;
+                    this.firstTerm += this.mathOperator == "+" || this.mathOperator == "-" || this.mathOperator == "X" || this.mathOperator == "/" ? "" : "8";
+                    this.secondTerm += this.mathOperator == "+" || this.mathOperator == "-" || this.mathOperator == "X" || this.mathOperator == "/" ? "8" : "";
+                    break;
+                case "9":
+                    displayTextBox.Text = displayTextBox.Text + buttonClick.Content;
+                    this.firstTerm += this.mathOperator == "+" || this.mathOperator == "-" || this.mathOperator == "X" || this.mathOperator == "/" ? "" : "9";
+                    this.secondTerm += this.mathOperator == "+" || this.mathOperator == "-" || this.mathOperator == "X" || this.mathOperator == "/" ? "9" : "";
+                    break;
+                case "0":
+                    displayTextBox.Text = displayTextBox.Text + buttonClick.Content;
+                    this.firstTerm += this.mathOperator == "+" || this.mathOperator == "-" || this.mathOperator == "X" || this.mathOperator == "/" ? "" : "0";
+                    this.secondTerm += this.mathOperator == "+" || this.mathOperator == "-" || this.mathOperator == "X" || this.mathOperator == "/" ? "0" : "";
+                    break;
+                case "CE":
+                    displayTextBox.Clear();
+                    this.firstTerm = "";
+                    this.mathOperator = "";
+                    this.secondTerm = "";
+                    break;
 
-            }else if ((string)b.Content ==  "CE")
-            {
+                case "+":
+                        
+                    if (this.mathOperator != "" && this.firstTerm != "" && this.secondTerm != "")
+                    {
+                        this.firstTerm = getSolution().ToString();
+                        this.mathOperator = "+";
+                        this.secondTerm = "";
+                    }
+                    else
+                    {
+                        this.mathOperator = "+";
+                    }
+                    displayTextBox.Text += buttonClick.Content;
 
-                displayTextBox.Clear();
+                    break;
+                case "-":
+                    if (this.mathOperator != "" && this.firstTerm != "" && this.secondTerm != "")
+                    {
+                        this.firstTerm = getSolution().ToString();
+                        this.mathOperator = "-";
+                        this.secondTerm = "";
+                    }
+                    else
+                    {
+                        this.mathOperator = "-";
+                    }
+                    displayTextBox.Text += buttonClick.Content;
+                    break;
+                case "X":
+                    if (this.mathOperator != "" && this.firstTerm != "" && this.secondTerm != "")
+                    {
+                        this.firstTerm = getSolution().ToString();
+                        this.mathOperator = "X";
+                        this.secondTerm = "";
+                    }
+                    else
+                    {
+                        this.mathOperator = "X";
+                    }
+                    displayTextBox.Text += buttonClick.Content;
+                    break;
+                case "/":
+                    if (this.mathOperator != "" && this.firstTerm != "" && this.secondTerm != "")
+                    {
+                        this.firstTerm = getSolution().ToString();
+                        this.mathOperator = "/";
+                        this.secondTerm = "";
+                    }
+                    else
+                    {
+                        this.mathOperator = "/";
+                    }
+                    displayTextBox.Text += buttonClick.Content;
+                    break;
+                case "=":
+                    displayTextBox.Text = "";
+                    historyMemoryLabel.Content += getSolution().ToString() +"\n";
+                    this.firstTerm = "";
+                    this.mathOperator = "";
+                    this.secondTerm = "";
+                    break;
+                case ".":
+                    if(!this.firstTerm.Contains("."))
+                    {
+                        if (this.firstTerm == "" && this.mathOperator == "" && this.secondTerm == "")
+                        {
+                            displayTextBox.Text += "0.";
+                            this.firstTerm = "0.";
+                        }
+
+                        if (this.firstTerm != "" && this.mathOperator == "" && this.secondTerm == "")
+                        {
+                            displayTextBox.Text += ".";
+                            this.firstTerm += ".";
+                        }
+                    }
+                    if(!this.secondTerm.Contains("."))
+                    {
+                        if (this.firstTerm != "" && this.mathOperator != "" && this.secondTerm == "")
+                        {
+                            displayTextBox.Text += "0.";
+                            this.secondTerm = "0.";
+                        }
+
+                        if (this.firstTerm != "" && this.mathOperator != "" && this.secondTerm != "")
+                        {
+                            displayTextBox.Text += ".";
+                            this.secondTerm += ".";
+                        }
+                    }
+                    break;
+
+
             }
-            else
-            {
-                if ((string)b.Content != "=")
-                    displayTextBox.Text = displayTextBox.Text + b.Content;
-                else
-                    displayTextBox.Text = displayTextBox.Text + b.Content;
-                    getSolution(displayTextBox.Text);
-            }
+            
 
         }
 
-        private Result getSolutionByString(string stringResult)
+        private double getSolution()
         {
-            
-            double term1 = 0.0;
-            double term2 = 0.0;
-
-            for(int i = 0; i < eachButton.Length; i++)
+            double result = 0.0;
+            switch(this.mathOperator)
             {
-                if(eachButton[i] == '(')
-                {
-                  
-
-
-                }
+                case "+":
+                    result = Convert.ToDouble(this.firstTerm) + Convert.ToDouble(this.secondTerm);
+                    break;
+                case "-":
+                    result = Convert.ToDouble(this.firstTerm) - Convert.ToDouble(this.secondTerm);
+                    break;
+                case "X":
+                    result = Convert.ToDouble(this.firstTerm) * Convert.ToDouble(this.secondTerm);
+                    break;
+                case "/":
+                    result = Convert.ToDouble(this.firstTerm) / Convert.ToDouble(this.secondTerm);
+                    break;
+                default:
+                    if (this.firstTerm != "")
+                        result = Convert.ToDouble(this.firstTerm);
+                    if (this.secondTerm != "")
+                        result = Convert.ToDouble(this.secondTerm);
+                    break;
             }
 
-            if(eachButton[0] != '+' && eachButton[0] != '-' && eachButton[0] != '/' && eachButton[0] != '*')
-            {
-                
-            }
 
-            Result doubleResult = new Result();
-            return doubleResult;
+
+            return result;
         }
     }
 }
