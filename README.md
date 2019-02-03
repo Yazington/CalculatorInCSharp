@@ -2,6 +2,7 @@
 This repo is just practice
 
 #TODO :
+
   -Add other buttons functionnalities
   
   -If user starts the calculation by a math operator, replace first term by 0
