@@ -1,5 +1,5 @@
 # W10CalculatorRemake
-This repo is just practice
+This repo is just for practice
 
 #TODO :
 
